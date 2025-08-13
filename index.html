@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aether Lock</title>
+  <link rel="icon" href="Aether.png" type="image/png" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    body {
+      background-color: #2C2F33; /* Fond inspiré de Discord */
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      max-width: 800px;
+      padding: 20px;
+    }
+    .logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+    }
+    .blur-text {
+      font-size: 36px;
+      color: rgba(255, 255, 255, 0.8);
+      text-shadow: 0 0 10px rgba(0,0,0,0.5);
+      backdrop-filter: blur(2px);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+    .description {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.7);
+      text-shadow: 0 0 5px rgba(0,0,0,0.5);
+      line-height: 1.6;
+    }
+    .discord-button {
+      background-color: #5865F2;
+      color: white;
+      font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .discord-button:hover {
+      background-color: #4752c4;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <img class="logo" src="Aether.png" alt="Logo Aether" />
+    <div class="blur-text">Bienvenue sur Aether</div>
+    <div class="description">Aether Lock est un bot de modération pour Discord, conçu pour sécuriser votre serveur, gérer les permissions et bloquer les contenus inappropriés de manière efficace et simple.</div>
+    <a href="https://discord.com/oauth2/authorize?client_id=1375540391050219590&scope=applications.commands%20bot&permissions=8" class="discord-button" target="_blank">Ajouter Aether Lock à mon serveur</a>
+    <a href="https://discord.gg/7EUy4fjNEf" class="discord-button" target="_blank">Rejoindre le support</a>
+  </div>
+</body>
+</html>
