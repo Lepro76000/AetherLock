@@ -62,8 +62,29 @@
       text-decoration: none;
       display: inline-block;
       margin-top: 10px;
+      transition: background-color 0.2s ease;
     }
     .discord-button:hover {
+      background-color: #4752c4;
+    }
+
+    /* --- Bouton discret en bas à droite --- */
+    .support-button {
+      position: fixed;
+      bottom: 15px;
+      right: 20px;
+      background-color: #5865F2;
+      color: white;
+      font-size: 14px;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.3s ease, background-color 0.3s ease;
+      font-weight: 500;
+    }
+    .support-button:hover {
+      opacity: 1;
       background-color: #4752c4;
     }
   </style>
@@ -73,8 +94,12 @@
     <img class="logo" src="Aether.png" alt="Logo Aether" />
     <div class="blur-text">Bienvenue sur Aether</div>
     <div class="description">Aether Lock est un bot de modération pour Discord, conçu pour sécuriser votre serveur, gérer les permissions et bloquer les contenus inappropriés de manière efficace et simple.</div>
+    
     <a href="https://discord.com/oauth2/authorize?client_id=1375540391050219590&scope=applications.commands%20bot&permissions=8" class="discord-button" target="_blank">Ajouter Aether Lock à mon serveur</a>
     <a href="https://discord.gg/7EUy4fjNEf" class="discord-button" target="_blank">Rejoindre le support</a>
   </div>
+
+  <!-- Bouton discret en bas à droite -->
+  <a href="support.html" class="support-button">Support</a>
 </body>
 </html>
