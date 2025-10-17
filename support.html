@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AetherSupport</title>
+
+  <!-- Icône du site -->
+  <link rel="icon" type="image/png" href="Aether.png" />
+  <link rel="apple-touch-icon" href="Aether.png" />
+
+  <meta name="description" content="Site AetherSupport" />
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #5865F2;
+      font-family: Arial, sans-serif;
+      position: relative; /* Pour positionner le bouton */
+    }
+
+    .login-frame {
+      background-color: #2C2F33;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      width: 300px;
+      text-align: center;
+    }
+
+    .login-frame img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      object-fit: cover;
+      border: none;
+    }
+
+    .login-frame h1 {
+      color: #FFFFFF;
+      margin: 0 0 20px 0;
+      font-size: 24px;
+    }
+
+    .login-frame label {
+      color: #B9BBBE;
+      font-size: 14px;
+      display: block;
+      text-align: left;
+      margin-bottom: 6px;
+      margin-left: 5px;
+    }
+
+    .login-frame input[type="text"], .login-frame select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #40444B;
+      color: #FFFFFF;
+      font-size: 14px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+
+    .login-frame input[type="text"]::placeholder {
+      color: #B9BBBE;
+    }
+
+    .login-frame button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #7289DA;
+      color: #FFFFFF;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .login-frame button:hover {
+      background-color: #5b6eae;
+    }
+
+    .login-frame .info-text {
+      font-size: 12px;
+      color: #B9BBBE;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* Bouton Home bas à droite */
+    .home-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #2ECC71; /* Vert discret */
+      color: #FFFFFF;
+      padding: 8px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      transition: background-color 0.2s;
+    }
+
+    .home-btn:hover {
+      background-color: #27ae60;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-frame">
+    <img src="Aether.png" alt="Logo AetherSupport">
+    <h1>AetherSupport</h1>
+
+    <label for="pseudo">Pseudo Discord</label>
+    <input type="text" id="pseudo" placeholder="Entrez votre pseudo">
+
+    <label for="type">Type de demande</label>
+    <select id="type">
+      <option value="Signalement">Signalement</option>
+      <option value="Report bug">Report bug</option>
+    </select>
+
+    <label for="reason">Raison</label>
+    <input type="text" id="reason" placeholder="Votre question / raison">
+
+    <button id="sendBtn">Envoyer</button>
+
+    <div class="info-text">
+      * Si dans le type de demande vous n'avez pas ce que vous voulez, rejoignez le discord
+    </div>
+  </div>
+
+  <!-- Bouton Home -->
+  <a href="index.html" class="home-btn">Home</a>
+
+  <script>
+    const webhookURL = "https://discord.com/api/webhooks/1428730701725040821/N-_rfqhSvaVTtVEbyha5N_I5HOOntzUqD0M8CZ9Lgn--CRJFaNJoPVDfnf2ykABamNZy";
+
+    document.getElementById("sendBtn").addEventListener("click", () => {
+      const pseudo = document.getElementById("pseudo").value.trim();
+      const type = document.getElementById("type").value;
+      const reason = document.getElementById("reason").value.trim();
+
+      if (!pseudo) {
+        alert("Veuillez entrer votre pseudo Discord !");
+        return;
+      }
+
+      if (!reason) {
+        alert("Veuillez entrer une raison ou question !");
+        return;
+      }
+
+      const message = `**Pseudo :** ${pseudo}\n**Type de demande :** ${type}\n**Raison :** ${reason}`;
+
+      fetch(webhookURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: message })
+      })
+      .then(() => {
+        alert("Votre demande a été envoyée !");
+        document.getElementById("pseudo").value = "";
+        document.getElementById("type").selectedIndex = 0;
+        document.getElementById("reason").value = "";
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Erreur lors de l'envoi. Réessayez !");
+      });
+    });
+  </script>
+</body>
+</html>
